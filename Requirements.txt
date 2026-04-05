@@ -1,0 +1,47 @@
+# INSTRUCCIONES PARA EL AGENTE DE CÓDIGO: ANÁLISIS "TREATONOMICS"
+
+*   **Tema:** "Treatonomics" como una forma de micro-resistencia o evasión frente a la incertidumbre económica.
+*   **Objetivos:**
+    *   Identificar los estímulos digitales que desencadenan el consumo emocional.
+    *   Analizar las emociones predominantes asociadas a este tipo de consumo.
+    *   Evaluar la brecha entre discurso racional (ahorro) y comportamiento real.
+    *   Determinar el rol de las plataformas digitales en la normalización de este comportamiento
+*   **Población:** Jóvenes (18-35 años). El CSV contiene tres segmentos: 18-22, 23-27 y 28-35.
+*   **Metodología:** Análisis cuantitativo de 102 respuestas recopiladas mediante formulario de Google (CSV).
+
+## 1. PREPROCESAMIENTO Y LIMPIEZA
+*   **Validación:** Identificar duplicados o respuestas incompletas (limpieza de Marca temporal).
+*   **Tipificación:** 
+    *   Convertir "Importancia del ahorro" (P3) a escala numérica 1-5.
+    *   Procesar P11 (Tipo de contenido) como variable múltiple (Promociones, Influencers, Videos "me lo merezco", etc.).
+    *   Categorizar sentimientos pre (P7) y post (P8) compra impulsiva.
+*   **Segmentación:** Por rangos de Edad (P1) y Situación actual (P2: Trabajo, Estudio, Ambas).
+
+## 2. ANÁLISIS ESTRATÉGICO POR OBJETIVOS
+
+### OA1: Estímulos Digitales y Desencadenantes
+*   **Acción:** Analizar la relación entre el tipo de contenido que genera deseo (P11) y la influencia real en la compra (P10).
+*   **Visualización Requerida:** Gráfico de barras de "Top Desencadenantes Digitales" basado en P11.
+
+### OA2: Psicología del Consumo (Emociones)
+*   **Acción:** Analizar la transición emocional pre-compra (P7) vs post-compra (P8). Incluir análisis de las frases de justificación (Columna 8: "Me lo merezco", "Para eso trabajo", etc.).
+*   **Visualización Requerida:** Matriz de transición emocional o Sankey Diagram que muestre el cambio de sentimiento (ej. de Ansioso a Tranquilo).
+
+### OA3: La Brecha Racional (Disonancia Cognitiva)
+*   **Acción:** Contrastar la importancia del ahorro (P3, escala 1-5) con la percepción de coherencia financiera (P13) y la frecuencia de compras no planificadas (P4).
+*   **Visualización Requerida:** Gráfico de burbujas o barras agrupadas comparando ahorro (P3) vs coherencia (P13).
+
+### OA4: Normalización en Plataformas
+*   **Acción:** Evaluar la frecuencia de exposición a contenido aspiracional (P9) y su influencia autopercibida en las decisiones (P12).
+*   **Visualización Requerida:** Gráfico de barras apiladas sobre la influencia de redes sociales (P12) segmentado por frecuencia de exposición (P9).
+
+## 3. ESTRUCTURA DEL INFORME FINAL
+El agente deberá generar un documento con las siguientes secciones:
+1.  **Metodología:** Breve descripción del procesamiento de datos.
+2.  **Hallazgos Clave:** Resumen ejecutivo de los descubrimientos más disruptivos.
+3.  **Análisis Detallado:** Integración de gráficas e interpretación académica (tono formal, analítico).
+4.  **Conclusiones:** Reflexión sobre cómo la incertidumbre económica valida la "Treatonomics" como una forma de micro-resistencia o evasión.
+
+## 4. REQUERIMIENTOS TÉCNICOS DE SALIDA
+*   **Librerías sugeridas:** Pandas (análisis), Matplotlib/Seaborn (visualización), Scipy (correlaciones).
+*   **Formato:** Reporte en Markdown con imágenes incrustadas o exportación a PDF.
