@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Completo | Treatonomics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --accent: #06b6d4;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --grad-2: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 2rem;
+            background-image: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn-back {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .chart-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .chart-card .question-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .chart-wrap { flex-grow: 1; min-height: 300px; position: relative; }
+
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>Análisis Granular</h1>
+                <p>Desglose descriptivo de la investigación original.</p>
+            </div>
+            <a href="index.html" class="btn-back">← Volver al Dashboard</a>
+        </header>
+
+        <div class="grid">
+            <div class="chart-card">
+                <h3>1. Perfil de Edad</h3>
+                <p class="question-text">P1: ¿Cuál es su rango de edad?</p>
+                <div class="chart-wrap"><canvas id="c1"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3>2. Ocupación</h3>
+                <p class="question-text">P2: ¿Cuál es su situación ocupacional actual?</p>
+                <div class="chart-wrap"><canvas id="c2"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3>3. Prioridad Económica</h3>
+                <p class="question-text">P3: ¿Qué tan importante es para usted ahorrar dinero actualmente? (Escala 1–5)</p>
+                <div class="chart-wrap"><canvas id="c3"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3>4. Impulsividad</h3>
+                <p class="question-text">P4: ¿Con qué frecuencia realiza compras no planificadas?</p>
+                <div class="chart-wrap"><canvas id="c4"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3>5. Comportamiento Reciente</h3>
+                <p class="question-text">P5: ¿Se ha dado “gustos” personales recientemente aunque no fueran necesarios?</p>
+                <div class="chart-wrap"><canvas id="c5"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3>6. Auto-Justificación</h3>
+                <p class="question-text">P6: Cuando realiza este tipo de compras, ¿suele justificarlas?</p>
+                <div class="chart-wrap"><canvas id="c6"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3>7. Narrativas de Evasión</h3>
+                <p class="question-text">Justificantes específicos utilizados (Me lo merezco, Para eso trabajo, etc.)</p>
+                <div class="chart-wrap"><canvas id="c7"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3>8. Estado Emocional Previo</h3>
+                <p class="question-text">P7: Antes de realizar una compra impulsiva, ¿cómo se siente normalmente?</p>
+                <div class="chart-wrap"><canvas id="c8"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3>9. Estado Emocional Posterior</h3>
+                <p class="question-text">P8: Después de realizarla, ¿cómo se siente?</p>
+                <div class="chart-wrap"><canvas id="c9"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3>10. Exposición Digital</h3>
+                <p class="question-text">P9: ¿Qué tan frecuentemente ve contenido en redes sociales relacionado con compras aspiracionales?</p>
+                <div class="chart-wrap"><canvas id="c10"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3>11. Conversión de Redes</h3>
+                <p class="question-text">P10: ¿Alguna vez ha comprado algo influenciado por contenido en redes sociales?</p>
+                <div class="chart-wrap"><canvas id="c11"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3>12. Desencadenantes Visuales</h3>
+                <p class="question-text">P11: ¿Qué tipo de contenido le genera más ganas de comprar?</p>
+                <div class="chart-wrap"><canvas id="c12"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3>13. Percepción de Influencia</h3>
+                <p class="question-text">P12: ¿Considera que las redes sociales influyen en sus decisiones de compra?</p>
+                <div class="chart-wrap"><canvas id="c13"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3>14. Coherencia Financiera</h3>
+                <p class="question-text">P13: ¿Cree que su comportamiento de consumo es coherente con sus objetivos?</p>
+                <div class="chart-wrap"><canvas id="c14"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const d = {
+            "edad": {"23 - 27": 52, "28 - 35": 21, "18 - 22": 27},
+            "situacion": {"Trabajo": 38, "Ambas": 31, "Estudio": 31},
+            "ahorro": {"1": 2, "2": 4, "3": 15, "4": 31, "5": 48},
+            "compra_freq": {"Nunca": 1, "Rara vez": 12, "A veces": 56, "Frecuentemente": 31},
+            "gustos": {"Sí": 92, "No": 8},
+            "justifica_bin": {"Sí": 58, "No": 42},
+            "justificaciones": {"Es solo una vez": 7, "No pasa nada": 14, "Me lo merezco": 29, "Para eso trabajo": 17},
+            "pre": {"Ansioso/a": 51, "Neutral": 48, "Estresado/a": 17, "Aburrido/a": 9, "Cansado/a": 4},
+            "post": {"Tranquilo/a": 23, "Feliz": 39, "Satisfecho/a": 33, "Con culpa": 30, "Indiferente": 14},
+            "redes_freq": {"Nunca": 6, "Rara vez": 29, "A veces": 33, "Frecuentemente": 32},
+            "influ_real": {"Sí": 64, "No": 36},
+            "contenido": {"Promociones": 65, "Recomendaciones": 48, "Videos 'merecer'": 10, "Influencers": 15},
+            "influ_perc": {"Sí": 63, "No": 16, "No estoy seguro/a": 21},
+            "coherencia": {"Sí": 35, "Parcialmente": 43, "No": 22}
+        };
+
+        const colors = ['#8b5cf6', '#3b82f6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#db2777'];
+        
+        Chart.defaults.color = '#94a3b8';
+        const createChart = (id, type, labels, values) => {
+            new Chart(document.getElementById(id), {
+                type: type,
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: colors.slice(0, labels.length),
+                        borderRadius: 12,
+                        borderWidth: 0
+                    }]
+                },
+                options: { 
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: type === 'pie' || type === 'doughnut', position: 'bottom' } } 
+                }
+            });
+        };
+
+        createChart('c1', 'bar', Object.keys(d.edad), Object.values(d.edad));
+        createChart('c2', 'doughnut', Object.keys(d.situacion), Object.values(d.situacion));
+        createChart('c3', 'bar', Object.keys(d.ahorro), Object.values(d.ahorro));
+        createChart('c4', 'bar', Object.keys(d.compra_freq), Object.values(d.compra_freq));
+        createChart('c5', 'pie', Object.keys(d.gustos), Object.values(d.gustos));
+        createChart('c6', 'pie', Object.keys(d.justifica_bin), Object.values(d.justifica_bin));
+        createChart('c7', 'bar', Object.keys(d.justificaciones), Object.values(d.justificaciones));
+        createChart('c8', 'bar', Object.keys(d.pre), Object.values(d.pre));
+        createChart('c9', 'bar', Object.keys(d.post), Object.values(d.post));
+        createChart('c10', 'bar', Object.keys(d.redes_freq), Object.values(d.redes_freq));
+        createChart('c11', 'doughnut', Object.keys(d.influ_real), Object.values(d.influ_real));
+        createChart('c12', 'bar', Object.keys(d.contenido), Object.values(d.contenido));
+        createChart('c13', 'bar', Object.keys(d.influ_perc), Object.values(d.influ_perc));
+        createChart('c14', 'bar', Object.keys(d.coherencia), Object.values(d.coherencia));
+    </script>
+</body>
+</html>
