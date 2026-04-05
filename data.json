@@ -1,0 +1,101 @@
+{
+    "total": 100,
+    "edad": {
+        "23 - 27": 52,
+        "28 - 35": 21,
+        "18 - 22": 27
+    },
+    "situacion": {
+        "Trabajo": 38,
+        "Ambas": 31,
+        "Estudio": 31
+    },
+    "ahorro": {
+        "5": 48,
+        "4": 31,
+        "3": 15,
+        "1": 2,
+        "2": 4
+    },
+    "compra_freq": {
+        "Frecuentemente": 31,
+        "A veces": 56,
+        "Rara vez": 12,
+        "Nunca": 1
+    },
+    "justificaciones": {
+        "“Es solo una vez”": 7,
+        "“No pasa nada”": 14,
+        "“Me lo merezco”": 29,
+        "“Para eso trabajo”": 17
+    },
+    "pre": {
+        "Ansioso/a": 51,
+        "Neutral": 48,
+        "Estresado/a": 17,
+        "Aburrido/a": 9,
+        "Cansado/a": 4
+    },
+    "post": {
+        "Tranquilo/a": 23,
+        "Feliz": 39,
+        "Satisfecho/a": 33,
+        "Con culpa": 30,
+        "Indiferente": 14
+    },
+    "redes_freq": {
+        "A veces": 33,
+        "Frecuentemente": 32,
+        "Rara vez": 29,
+        "Nunca": 6
+    },
+    "influ_real": {
+        "Sí": 64,
+        "No": 36
+    },
+    "contenido": {
+        "Promociones": 65,
+        "Recomendaciones de otros usuarios": 48,
+        "reviews": 1,
+        "Videos tipo “me lo merezco”": 10,
+        "Influencers": 15,
+        "Ninguno": 1
+    },
+    "influ_perc": {
+        "Sí": 63,
+        "No estoy seguro/a": 21,
+        "No": 16
+    },
+    "coherencia": {
+        "Parcialmente": 43,
+        "No": 22,
+        "Sí": 35
+    },
+    "gustos": {
+        "Sí": 92,
+        "No": 8
+    },
+    "justifica_bin": {
+        "Sí": 58,
+        "No": 42
+    },
+    "questions": {
+        "edad": "1.Edad ",
+        "situacion": "2.Situación actual  ",
+        "ahorro": "3.¿Qué tan importante es para usted ahorrar dinero actualmente?  \n(Escala 1–5: Nada importante → Muy importante)  ",
+        "compra_freq": "4.¿Con qué frecuencia realiza compras no planificadas?  ",
+        "gustos": "5.¿Se ha dado “gustos” personales recientemente aunque no fueran necesarios? ",
+        "justifica": "6.Cuando realiza este tipo de compras, ¿suele justificarlas? ",
+        "frase": "Si respondió \"Sí\" a la pregunta anterior",
+        "pre": "7.Antes de realizar una compra impulsiva, ¿cómo se siente normalmente?  ",
+        "post": "8.Después de realizarla, ¿cómo se siente? ",
+        "redes_freq": "9.¿Qué tan frecuentemente ve contenido en redes sociales relacionado con compras o estilos de vida aspiracionales?  ",
+        "influ_real": "10.¿Alguna vez ha comprado algo influenciado por contenido en redes sociales?",
+        "contenido": "11.¿Qué tipo de contenido le genera más ganas de comprar? \nPuede seleccionar varios ",
+        "influ_perc": "12.¿Considera que las redes sociales influyen en sus decisiones de compra?  ",
+        "coherencia": "13.¿Cree que su comportamiento de consumo es coherente con sus objetivos financieros?  "
+    },
+    "kpi_reward": 46.0,
+    "kpi_dissonance": 48.0,
+    "kpi_digital": 79.0
+}
