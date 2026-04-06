@@ -309,7 +309,7 @@
         new Chart(document.getElementById('chart-triggers'), {
             type: 'bar',
             data: {
-                labels: Object.keys(rawData.contenido),
+                labels: Object.keys(rawData.contenido).map(label => label === 'Recomendaciones de otros usuarios' ? ['Recomendaciones', 'de otros usuarios'] : label),
                 datasets: [{
                     label: 'Frecuencia de Desencadenante',
                     data: Object.values(rawData.contenido),
