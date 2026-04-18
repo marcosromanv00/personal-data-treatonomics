@@ -1,3 +1,17 @@
-presentation-content/
-*.txt
-*.doc*
+# Data Privacy
+*.csv
+"ENCUESTA – TREATONOMICS  (Respuestas) - Respuestas de formulario 1.csv"
+
+# Internal Research & Drafts
+trabajo-escrito/
+temp_docx_extract/
+scratch/
+docx_summary.txt
+docx_text.txt
+
+# Agent Internal
+.gemini/
+
+# Keep these public even if they match patterns above
+!Requirements.txt
+!README.md
