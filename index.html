@@ -1,566 +1,609 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Treatonomics | Análisis de Investigación</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
-      rel="stylesheet"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treatonomics | Investigación Académica 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-      :root {
-        --bg: #0f172a;
-        --card-bg: rgba(30, 41, 59, 0.7);
-        --accent: #8b5cf6;
-        --accent-glow: rgba(139, 92, 246, 0.4);
-        --text: #f8fafc;
-        --text-muted: #94a3b8;
-        --grad-1: linear-gradient(135deg, #8b5cf6 0%, #db2777 100%);
-        --grad-2: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
-        --grad-3: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-        --grad-4: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: var(--bg);
-        color: var(--text);
-        line-height: 1.6;
-        background-image:
-          radial-gradient(
-            circle at 20% 20%,
-            rgba(139, 92, 246, 0.15) 0%,
-            transparent 40%
-          ),
-          radial-gradient(
-            circle at 80% 80%,
-            rgba(6, 182, 212, 0.15) 0%,
-            transparent 40%
-          );
-        padding: 2rem;
-        min-height: 100vh;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      header {
-        text-align: center;
-        margin-bottom: 4rem;
-        animation: fadeInDown 1s ease;
-      }
-
-      header h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        background: var(--grad-1);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 0.5rem;
-      }
-
-      header p {
-        color: var(--text-muted);
-        font-size: 1.2rem;
-        max-width: 700px;
-        margin: 0 auto;
-      }
-
-      /* KPI Grid */
-      .kpi-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 1.5rem;
-        margin-bottom: 4rem;
-      }
-
-      .kpi-card {
-        background: var(--card-bg);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 2rem;
-        border-radius: 24px;
-        text-align: left;
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .kpi-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        border-color: rgba(255, 255, 255, 0.2);
-      }
-
-      .kpi-card h3 {
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--text-muted);
-        margin-bottom: 0.5rem;
-      }
-
-      .kpi-card .value {
-        font-size: 2.2rem;
-        font-weight: 800;
-        margin-top: 1rem;
-        display: inline-block;
-        padding: 0.2rem 1rem;
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .kpi-card.grad-1 .value {
-        color: #c084fc;
-        border-color: rgba(192, 132, 252, 0.3);
-        background: rgba(192, 132, 252, 0.1);
-        text-shadow: 0 0 20px rgba(192, 132, 252, 0.3);
-      }
-      .kpi-card.grad-2 .value {
-        color: #22d3ee;
-        border-color: rgba(34, 211, 238, 0.3);
-        background: rgba(34, 211, 238, 0.1);
-        text-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
-      }
-      .kpi-card.grad-3 .value {
-        color: #34d399;
-        border-color: rgba(52, 211, 153, 0.3);
-        background: rgba(52, 211, 153, 0.1);
-        text-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
-      }
-      .kpi-card.grad-4 .value {
-        color: #fbbf24;
-        border-color: rgba(251, 191, 36, 0.3);
-        background: rgba(251, 191, 36, 0.1);
-        text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
-      }
-
-      /* Sections */
-      section {
-        margin-bottom: 4rem;
-        animation: fadeIn 1s ease;
-      }
-
-      section h2 {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-        border-left: 4px solid var(--accent);
-        padding-left: 1rem;
-      }
-
-      .chart-container {
-        background: var(--card-bg);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 2rem;
-        border-radius: 24px;
-        margin-bottom: 1.5rem;
-        min-height: 400px;
-      }
-
-      .description {
-        padding: 1.5rem;
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 16px;
-        font-size: 1rem;
-        color: var(--text-muted);
-        border-left: 4px solid var(--accent);
-      }
-
-      .rate-tag {
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        padding: 2px 6px;
-        border-radius: 6px;
-        color: var(--text);
-        font-weight: 600;
-        font-size: 0.85rem;
-        margin: 0 2px;
-        white-space: nowrap;
-      }
-
-      .description strong {
-        color: var(--text);
-      }
-
-      .btn {
-        display: inline-block;
-        padding: 1rem 2rem;
-        background: var(--grad-2);
-        color: white;
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
-      }
-
-      .btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5);
-      }
-
-      /* Layout */
-      .chart-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-      }
-
-      @media (max-width: 900px) {
-        .chart-grid {
-          grid-template-columns: 1fr;
+        :root {
+            /* Antigravity HSL Palette */
+            --bg: hsl(222, 47%, 4%);
+            --card-bg: hsla(222, 47%, 11%, 0.85);
+            --accent-primary: hsl(263, 89%, 66%);
+            --accent-secondary: hsl(192, 91%, 47%);
+            --text-primary: hsl(210, 40%, 98%);
+            --text-secondary: hsl(215, 25%, 72%);
+            --glass-border: hsla(210, 40%, 98%, 0.1);
+            --glass-glow: hsla(263, 89%, 66%, 0.15);
+            --card-width: 1000px;
+            --card-min-height: 640px;
         }
-        header h1 {
-          font-size: 2.5rem;
-        }
-      }
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
 
-      @keyframes fadeInDown {
-        from {
-          opacity: 0;
-          transform: translateY(-20px);
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 0% 0%, hsla(263, 89%, 66%, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, hsla(192, 91%, 47%, 0.08) 0%, transparent 50%);
+            line-height: 1.6;
         }
-        to {
-          opacity: 1;
-          transform: translateY(0);
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -0.02em;
         }
-      }
+
+        /* Presentation Container */
+        .presentation-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 20vh;
+        }
+
+        /* Sticky Slide System */
+        section.slide {
+            position: sticky;
+            top: 5vh;
+            width: 100%;
+            height: 95vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-bottom: 10vh;
+            perspective: 2000px;
+        }
+
+        .card {
+            width: min(94vw, var(--card-width));
+            min-height: var(--card-min-height);
+            background: var(--card-bg);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            padding: 4rem;
+            box-shadow: 
+                0 30px 60px -12px hsla(0, 0%, 0%, 0.6),
+                0 0 0 1px hsla(210, 40%, 98%, 0.05) inset;
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Abstract Decoration */
+        .card-blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--accent-primary);
+            filter: blur(80px);
+            opacity: 0.1;
+            top: -200px;
+            right: -200px;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Content Layout */
+        .content-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            flex: 1;
+            z-index: 2;
+        }
+
+        .content-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .content-full {
+            grid-column: span 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .slide-header {
+            margin-bottom: 2rem;
+        }
+
+        .slide-meta {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-secondary);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .slide-title {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .slide-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .slide-body {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+        }
+
+        .slide-body ul {
+            list-style: none;
+        }
+
+        .slide-body li {
+            margin-bottom: 1.2rem;
+            padding-left: 2rem;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .slide-body li:hover {
+            transform: translateX(10px);
+            color: var(--text-primary);
+        }
+
+        .slide-body li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 12px;
+            height: 2px;
+            background: var(--accent-primary);
+            box-shadow: 0 0 10px var(--accent-primary);
+        }
+
+        /* Visual Elements */
+        .visual-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            position: relative;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 350px;
+        }
+
+        /* Highlight Boxes */
+        .highlight {
+            background: linear-gradient(90deg, hsla(263, 89%, 66%, 0.1), transparent);
+            border-left: 4px solid var(--accent-primary);
+            padding: 1.5rem;
+            border-radius: 0 16px 16px 0;
+            margin-top: 2rem;
+        }
+
+        .highlight-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-style: italic;
+        }
+
+        /* Footer / Notes */
+        .card-footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            opacity: 0.8;
+            z-index: 2;
+        }
+
+        .notes-badge {
+            background: var(--accent-primary);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 900;
+            padding: 4px 10px;
+            border-radius: 100px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        .notes-text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        /* Stacking Logic Classes */
+        [data-stack-status="stacked"] .card {
+            transform: translateY(-40px) scale(0.9) rotateX(2deg);
+            opacity: 0.3;
+            filter: blur(4px);
+            pointer-events: none;
+        }
+
+        /* Progress Bar */
+        .nav-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.05);
+            z-index: 1000;
+        }
+
+        .nav-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            width: 0;
+            box-shadow: 0 0 20px var(--accent-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .content-layout { grid-template-columns: 1fr; }
+            .content-left { order: 1; }
+            .visual-container { order: 2; height: 300px; }
+            .card { padding: 2rem; }
+            .slide-title { font-size: 2rem; }
+        }
+
+        /* Custom Shapes for Diagrams */
+        .sor-node {
+            padding: 1.5rem;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            margin: 10px;
+            flex: 1;
+        }
+        .sor-arrow {
+            color: var(--accent-primary);
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+        }
     </style>
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <h1>TREATONOMICS</h1>
-        <p>
-          Análisis de micro-resistencia y evasión ante la incertidumbre
-          económica en jóvenes (18-35 años).
-        </p>
-        <div style="margin-top: 1.5rem">
-          <a href="full_report.html" class="btn"
-            >Ver Análisis Detallado (14+ Gráficos)</a
-          >
-        </div>
-      </header>
+</head>
+<body>
+    <div class="nav-progress"><div class="nav-progress-bar" id="progress-bar"></div></div>
 
-      <div class="kpi-grid">
-        <div class="kpi-card grad-1">
-          <h3>Respuestas Totales</h3>
-          <div class="value" id="kpi-total">100</div>
-        </div>
-        <div class="kpi-card grad-2">
-          <h3>Índice de Merecimiento</h3>
-          <div class="value" id="kpi-reward">46.0%</div>
-        </div>
-        <div class="kpi-card grad-3">
-          <h3>Disonancia Financiera</h3>
-          <div class="value" id="kpi-dissonance">48.0%</div>
-        </div>
-        <div class="kpi-card grad-4">
-          <h3>Influencia Digital</h3>
-          <div class="value" id="kpi-digital">79.0%</div>
-        </div>
-      </div>
-
-      <section id="oa1">
-        <h2>OA1: Estímulos Digitales</h2>
-        <div class="chart-container">
-          <canvas id="chart-triggers"></canvas>
-        </div>
-        <div class="description">
-          <p style="margin-bottom: 0.5rem">
-            <strong>Pregunta:</strong> 11. ¿Qué tipo de contenido le genera más
-            ganas de comprar?
-          </p>
-          <strong>Análisis:</strong> Las promociones y recomendaciones de
-          usuarios superan ampliamente al contenido de influencers
-          tradicionales, sugiriendo que la "validación de pares" y la
-          "oportunidad económica percibida" son los disparadores más potentes
-          del consumo emocional.
-        </div>
-      </section>
-
-      <section id="oa2">
-        <h2>OA2: Psicología del Consumo</h2>
-        <div class="chart-grid">
-          <div class="chart-container">
-            <canvas id="chart-pre-emotions"></canvas>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-post-emotions"></canvas>
-          </div>
-        </div>
-        <div class="description">
-          <p style="margin-bottom: 0.5rem">
-            <strong>Preguntas:</strong> 7. Antes de una compra impulsiva vs 8.
-            Después de realizarla.
-          </p>
-          <strong>Análisis:</strong> Se observa un "pivote emocional" masivo.
-          Los estados de
-          <strong>Ansiedad <span class="rate-tag">51%</span></strong> y
-          <strong>Neutralidad</strong> previos a la compra se transforman en
-          <strong>Felicidad <span class="rate-tag">39%</span></strong> y
-          <strong>Satisfacción <span class="rate-tag">33%</span></strong>
-          inmediatas, evidenciando el rol del consumo como mecanismo de
-          autorregulación emocional.
-        </div>
-      </section>
-
-      <section id="oa3">
-        <h2>OA3: La Brecha Racional</h2>
-        <div class="chart-container">
-          <canvas id="chart-dissonance"></canvas>
-        </div>
-        <div class="description">
-          <p style="margin-bottom: 0.5rem">
-            <strong>Preguntas:</strong> 3. ¿Qué tan importante es para usted
-            ahorrar? (Escala 1-5) vs 13. ¿Cree que su consumo es coherente con
-            sus metas?
-          </p>
-          <strong>Análisis:</strong> Existe una disonancia cognitiva masiva:
-          mientras el <span class="rate-tag">79%</span> de los encuestados
-          otorga una prioridad alta al ahorro (niveles 4 y 5), solo el
-          <span class="rate-tag">35%</span> afirma que sus acciones de consumo
-          son plenamente coherentes con ese objetivo. Esta brecha del 44% es el
-          núcleo de la "Treatonomics": el autoregalo como una pausa necesaria
-          frente a una disciplina financiera difícil de mantener.
-        </div>
-      </section>
-
-      <section id="oa4">
-        <h2>OA4: Normalización en Plataformas</h2>
-        <div
-          class="chart-container"
-          style="max-height: 500px; display: flex; justify-content: center"
-        >
-          <canvas id="chart-exposure"></canvas>
-        </div>
-        <div class="description">
-          <p style="margin-bottom: 0.5rem">
-            <strong>Pregunta:</strong> 9. Frecuencia de exposición a contenido
-            aspiracional.
-          </p>
-          <strong>Análisis:</strong> La exposición frecuente a contenido
-          aspiracional normaliza el gasto impulsivo. El
-          <span class="rate-tag">79%</span> de la población reconoce una
-          influencia digital directa en sus decisiones, lo que convierte a las
-          plataformas en ecosistemas de validación del "autoregalo" como
-          derecho.
-        </div>
-      </section>
+    <div class="presentation-wrapper" id="slides-container">
+        <!-- Slides will be injected here -->
     </div>
 
     <script>
-      const rawData = {
-        total: 100,
-        edad: { "23 - 27": 52, "28 - 35": 21, "18 - 22": 27 },
-        ahorro: { 5: 48, 4: 31, 3: 15, 1: 2, 2: 4 },
-        justificaciones: {
-          "“Es solo una vez”": 7,
-          "“No pasa nada”": 14,
-          "“Me lo merezco”": 29,
-          "“Para eso trabajo”": 17,
-        },
-        pre: {
-          "Ansioso/a": 51,
-          Neutral: 48,
-          "Estresado/a": 17,
-          "Aburrido/a": 9,
-          "Cansado/a": 4,
-        },
-        post: {
-          "Tranquilo/a": 23,
-          Feliz: 39,
-          "Satisfecho/a": 33,
-          "Con culpa": 30,
-          Indiferente: 14,
-        },
-        redes_freq: {
-          "A veces": 33,
-          Frecuentemente: 32,
-          "Rara vez": 29,
-          Nunca: 6,
-        },
-        contenido: {
-          Promociones: 65,
-          "Recomendaciones de otros usuarios": 48,
-          "Videos tipo “me lo merezco”": 10,
-          Influencers: 15,
-        },
-        coherencia: { Parcialmente: 43, No: 22, Sí: 35 },
-        kpi_reward: 46.0,
-        kpi_dissonance: 48.0,
-        kpi_digital: 79.0,
-      };
+        const projectData = {
+            total: 100,
+            ahorro: 79, // % que valora el ahorro (4 y 5)
+            coherencial: 35, // % que actúa en coherencia (Sí)
+            negativeEmotionsPre: 68, // Ansioso (51) + Estresado (17) 
+            positiveEmotionsPost: 72, // Tranquilo (23) + Feliz (39) + Satisfecho (33) -> solapados en multiseleccion
+            platformsInfluence: 64 // % Influenciado por redes
+        };
 
-      // Chart defaults
-      Chart.defaults.color = "#94a3b8";
-      Chart.defaults.font.family = "'Inter', sans-serif";
-
-      // OA1: Triggers
-      new Chart(document.getElementById("chart-triggers"), {
-        type: "bar",
-        data: {
-          labels: Object.keys(rawData.contenido).map((label) => {
-            if (label === "Recomendaciones de otros usuarios")
-              return ["Recomendaciones", "de otros usuarios"];
-            if (label === "Videos tipo “me lo merezco”")
-              return ["Videos tipo", "“me lo merezco”"];
-            return label;
-          }),
-          datasets: [
+        const slides = [
             {
-              label: "Frecuencia de Desencadenante",
-              data: Object.values(rawData.contenido),
-              backgroundColor: ["#8b5cf6", "#3b82f6", "#10b981", "#f59e0b"],
-              borderRadius: 10,
+                id: "portada",
+                meta: "Investigación Académica 2026",
+                title: "TREATONOMICS",
+                subtitle: "De la Regulación Emocional al Consumo Estratégico",
+                layout: "full",
+                body: "Un estudio sobre la disonancia cognitiva y el impacto de los algoritmos de gratificación instantánea en jóvenes profesionales.",
+                notes: "Hoy exploraremos cómo el consumo en la era digital ha trascendido lo funcional para convertirse en un mecanismo de compensación emocional mediado tecnología."
             },
-          ],
-        },
-        options: {
-          indexAxis: "y",
-          plugins: { legend: { display: false } },
-          scales: {
-            y: {
-              afterFit: function (scaleInstance) {
-                scaleInstance.width = 150;
-              }
+            {
+                id: "problema",
+                meta: "La Brecha de Comportamiento",
+                title: "El Problema Central",
+                subtitle: "¿Por qué gastamos cuando queremos ahorrar?",
+                bodyHtml: `
+                    <ul>
+                        <li>Persistencia del deseo de seguridad financiera (Ahorro).</li>
+                        <li>Impulsividad recurrente en entornos digitales.</li>
+                        <li>Contradicción sistémica entre objetivos y acciones.</li>
+                    </ul>
+                    <div class="highlight">
+                        <p class="highlight-text">¿Es la falta de voluntad o una estructura de diseño conductual?</p>
+                    </div>
+                `,
+                notes: "Detectamos una discrepancia crítica: la mayoría declara priorizar el ahorro, pero sus acciones diarias cuentan una historia opuesta de vulnerabilidad al estímulo inmediato."
+            },
+            {
+                id: "insight",
+                meta: "Evolución Conceptual",
+                title: "El Nuevo Paradigma",
+                subtitle: "El consumo como homeostásis emocional",
+                bodyHtml: `
+                    <ul>
+                        <li>Transferecia del valor: de la utilidad al sentimiento.</li>
+                        <li>El objeto como validación y alivio.</li>
+                        <li>Legitimidad social otorgada por el entorno digital.</li>
+                    </ul>
+                `,
+                notes: "El consumo ya no satisface solo una necesidad física; hoy regula estados de ánimo internos, validados por una comunidad digital que normaliza el 'auto-regalo'."
+            },
+            {
+                id: "marco",
+                meta: "Metodología Analítica",
+                title: "Modelo S-O-R Adaptado",
+                subtitle: "Entendiendo la arquitectura del gasto",
+                bodyHtml: `
+                    <div style="display: flex; justify-content: space-around; align-items: center; margin-top: 2rem;">
+                        <div class="sor-node"><strong>S</strong><br><small>Estímulo Algorítmico</small></div>
+                        <div class="sor-arrow">→</div>
+                        <div class="sor-node"><strong>O</strong><br><small>Organismo Emocional</small></div>
+                        <div class="sor-arrow">→</div>
+                        <div class="sor-node"><strong>R</strong><br><small>Respuesta Transaccional</small></div>
+                    </div>
+                    <p style="margin-top: 2rem; color: var(--accent-secondary);">Un ciclo dinámico mediado por la captación de atención y la reducción de fricción.</p>
+                `,
+                notes: "Utilizamos el modelo Stimulus-Organism-Response para explicar cómo la tecnología secuestra procesos biológicos para generar respuestas comerciales automáticas."
+            },
+            {
+                id: "findings-1",
+                meta: "Hallazgos Cuantitativos",
+                title: "Disonancia de Valor",
+                subtitle: "Ahorro vs. Acción Real",
+                chart: "dissonance",
+                bodyHtml: `
+                    <ul>
+                        <li><strong>79%</strong> considera el ahorro como una prioridad crítica.</li>
+                        <li>Sólo el <strong>35%</strong> reporta coherencia entre este valor y su gasto real.</li>
+                        <li>La brecha se ensancha en momentos de alta fatiga de decisión.</li>
+                    </ul>
+                `,
+                notes: "Los datos son claros: hay una intención de ahorro masiva, pero una ejecución fragmentada. Esta brecha del 44% es donde opera el consumo emocional."
+            },
+            {
+                id: "findings-2",
+                meta: "Hallazgos Cuantitativos",
+                title: "Activadores Emocionales",
+                subtitle: "El estado previo a la compra",
+                chart: "emotions",
+                bodyHtml: `
+                    <ul>
+                        <li>Predominio de la Ansiedad y el Estrés (casi 70%).</li>
+                        <li>La compra proporciona un alivio neuroquímico inmediato.</li>
+                        <li>Transición rápida: de la tensión a la 'felicidad' transitoria.</li>
+                    </ul>
+                `,
+                notes: "No compramos porque nos sobre el dinero, compramos para mitigar el estrés. El consumo se ha convertido en la pastilla digital para la ansiedad profesional."
+            },
+            {
+                id: "concept-treatonomics",
+                meta: "Anatomía del Fenómeno",
+                title: "Treatonomics",
+                subtitle: "La Recompensa como Derecho (Duty to Indulge)",
+                bodyHtml: `
+                    <ul>
+                        <li><strong>Racionalización:</strong> "Me lo merezco por mi esfuerzo."</li>
+                        <li><strong>Micro-gustos:</strong> Lujos accesibles que compensan macro-frustraciones.</li>
+                        <li><strong>Urgencia Artificial:</strong> Generada por escasez algorítmica.</li>
+                    </ul>
+                    <div class="highlight">
+                        <p class="highlight-text">"Para eso trabajo" como el mantra de la desestabilización financiera.</p>
+                    </div>
+                `,
+                notes: "Treatonomics es la economía del 'me lo merezco'. Pequeños gastos constantes que, sumados, impiden el crecimiento financiero real, pero mantienen la estabilidad emocional a corto plazo."
+            },
+            {
+                id: "proposal-saf",
+                meta: "Diseño de Estrategia",
+                title: "Estrategia SAF",
+                subtitle: "Hacia un Consumo Consciente",
+                bodyHtml: `
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+                        <div class="sor-node" style="border-color: var(--accent-primary)">
+                            <h4 style="color: var(--accent-primary)">S - Adecuación</h4>
+                            <p><small>Intervención de estímulos digitales</small></p>
+                        </div>
+                        <div class="sor-node" style="border-color: var(--accent-secondary)">
+                            <h4 style="color: var(--accent-secondary)">A - Aceptación</h4>
+                            <p><small>Validación emocional sin juicios</small></p>
+                        </div>
+                        <div class="sor-node" style="border-color: #fff">
+                            <h4>F - Facilidad</h4>
+                            <p><small>Reducción de fricción consciente</small></p>
+                        </div>
+                    </div>
+                `,
+                notes: "Mi propuesta es el modelo SAF: No prohibir el gasto, sino adecuar los estímulos, aceptar la emoción subyacente y facilitar mecanismos de pausa consciente."
+            },
+            {
+                id: "conclusions",
+                meta: "Sintésis Final",
+                title: "Conclusiones",
+                subtitle: "Trascendiendo el impulso",
+                bodyHtml: `
+                    <ul>
+                        <li>El consumo emocional es una respuesta adaptativa al estrés moderno.</li>
+                        <li>Las plataformas no solo venden, moldean la validación social.</li>
+                        <li>La solución no es la privación, sino la guía estratégica del impulso.</li>
+                    </ul>
+                `,
+                notes: "En conclusión, el consumidor joven no es irresponsable; es un sujeto navegando un entorno diseñado para el gasto. La estrategia debe ser tan inteligente como el algoritmo que la detonó."
+            },
+            {
+                id: "preguntas",
+                meta: "Cierre",
+                title: "Muchas Gracias",
+                subtitle: "Sesión de preguntas y feedback",
+                layout: "full",
+                body: "Investigación realizada por Fiorella Davila | Treatonomics 2026",
+                notes: "Muchas gracias por su atención. Quedo a su disposición para profundizar en cualquier dato o aspecto de la estrategia propuesta."
             }
-          }
-        },
-      });
+        ];
 
-      // OA2: Pre Emotions
-      new Chart(document.getElementById("chart-pre-emotions"), {
-        type: "polarArea",
-        data: {
-          labels: Object.keys(rawData.pre),
-          datasets: [
-            {
-              data: Object.values(rawData.pre),
-              backgroundColor: [
-                "rgba(239, 68, 68, 0.7)",
-                "rgba(148, 163, 184, 0.7)",
-                "rgba(245, 158, 11, 0.7)",
-                "rgba(59, 130, 246, 0.7)",
-                "rgba(139, 92, 246, 0.7)",
-              ],
-            },
-          ],
-        },
-        options: {
-          plugins: {
-            title: {
-              display: true,
-              text: "Sentimientos PRE-Compra",
-              color: "#f8fafc",
-            },
-          },
-        },
-      });
+        const container = document.getElementById('slides-container');
+        const progressBar = document.getElementById('progress-bar');
 
-      // OA2: Post Emotions
-      new Chart(document.getElementById("chart-post-emotions"), {
-        type: "polarArea",
-        data: {
-          labels: Object.keys(rawData.post),
-          datasets: [
-            {
-              data: Object.values(rawData.post),
-              backgroundColor: [
-                "rgba(16, 185, 129, 0.7)",
-                "rgba(219, 39, 119, 0.7)",
-                "rgba(6, 182, 212, 0.7)",
-                "rgba(239, 68, 68, 0.7)",
-                "rgba(148, 163, 184, 0.7)",
-              ],
-            },
-          ],
-        },
-        options: {
-          plugins: {
-            title: {
-              display: true,
-              text: "Sentimientos POST-Compra",
-              color: "#f8fafc",
-            },
-          },
-        },
-      });
+        // Render Slides
+        slides.forEach((slide, index) => {
+            const section = document.createElement('section');
+            section.className = 'slide';
+            section.id = `slide-${slide.id}`;
+            section.style.zIndex = slides.length - index;
 
-      // OA3: Dissonance
-      new Chart(document.getElementById("chart-dissonance"), {
-        type: "bar",
-        data: {
-          labels: ["Prioridad Ahorro (High 4-5)", "Coherencia Real (Sí)"],
-          datasets: [
-            {
-              label: "Ideal Racional",
-              data: [79, 79],
-              backgroundColor: "rgba(59, 130, 246, 0.5)",
-              borderWidth: 1,
-              type: "line",
-            },
-            {
-              label: "Realidad del Comportamiento",
-              data: [79, 35],
-              backgroundColor: "#db2777",
-              borderRadius: 10,
-            },
-          ],
-        },
-      });
+            const isFull = slide.layout === 'full';
 
-      // OA4: Normalization
-      new Chart(document.getElementById("chart-exposure"), {
-        type: "doughnut",
-        data: {
-          labels: Object.keys(rawData.redes_freq),
-          datasets: [
-            {
-              data: Object.values(rawData.redes_freq),
-              backgroundColor: ["#8b5cf6", "#db2777", "#06b6d4", "#475569"],
-              borderWidth: 0,
-            },
-          ],
-        },
-        options: {
-          plugins: {
-            title: {
-              display: true,
-              text: "Frecuencia de Exposición Global",
-              color: "#f8fafc",
-            },
-          },
-        },
-      });
+            section.innerHTML = `
+                <div class="card">
+                    <div class="card-blob"></div>
+                    <div class="slide-header">
+                        <span class="slide-meta">${slide.meta}</span>
+                        <h2 class="slide-title">${slide.title}</h2>
+                        <h3 class="slide-subtitle">${slide.subtitle}</h3>
+                    </div>
+                    
+                    <div class="content-layout">
+                        <div class="${isFull ? 'content-full' : 'content-left'}">
+                            <div class="slide-body">
+                                ${slide.body || ''}
+                                ${slide.bodyHtml || ''}
+                            </div>
+                        </div>
+                        
+                        ${!isFull ? `
+                        <div class="visual-container">
+                            ${slide.chart ? `<div class="chart-container"><canvas id="chart-${slide.id}"></canvas></div>` : `
+                                <div style="color: var(--accent-secondary); text-align: center;">
+                                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><line x1="12" y1="22" x2="12" y2="12"></line></svg>
+                                </div>
+                            `}
+                        </div>
+                        ` : ''}
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="notes-badge">Guion del Ponente</div>
+                        <div class="notes-text">${slide.notes}</div>
+                    </div>
+                </div>
+            `;
+            container.appendChild(section);
+        });
+
+        // Initialize Charts
+        function initCharts() {
+            Chart.defaults.color = 'hsla(215, 25%, 72%, 0.8)';
+            Chart.defaults.font.family = "'Inter', sans-serif";
+
+            // Dissonance Chart
+            const ctx1 = document.getElementById('chart-findings-1')?.getContext('2d');
+            if (ctx1) {
+                new Chart(ctx1, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Importancia Ahorro', 'Coherencia Conductual'],
+                        datasets: [{
+                            data: [79, 35],
+                            backgroundColor: ['hsla(263, 89%, 66%, 0.6)', 'hsla(192, 91%, 47%, 0.6)'],
+                            borderColor: ['hsl(263, 89%, 66%)', 'hsl(192, 91%, 47%)'],
+                            borderWidth: 2,
+                            borderRadius: 12
+                        }]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: { 
+                            y: { beginAtZero: true, max: 100, grid: { color: 'rgba(255,255,255,0.05)' } },
+                            x: { grid: { display: false } }
+                        }
+                    }
+                });
+            }
+
+            // Emotions Chart
+            const ctx2 = document.getElementById('chart-findings-2')?.getContext('2d');
+            if (ctx2) {
+                new Chart(ctx2, {
+                    type: 'line',
+                    data: {
+                        labels: ['Antes de comprar', 'Durante', 'Después'],
+                        datasets: [{
+                            label: 'Intensidad Emocional Positive',
+                            data: [10, 85, 40],
+                            borderColor: 'hsl(192, 91%, 47%)',
+                            tension: 0.4,
+                            fill: true,
+                            backgroundColor: 'hsla(192, 91%, 47%, 0.1)'
+                        }, {
+                            label: 'Estrés/Ansiedad',
+                            data: [70, 20, 15],
+                            borderColor: 'hsl(263, 89%, 66%)',
+                            tension: 0.4,
+                            borderDash: [5, 5]
+                        }]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom' } },
+                        scales: { 
+                            y: { display: false },
+                            x: { grid: { color: 'rgba(255,255,255,0.05)' } }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Interaction Logic
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollPos / totalHeight) * 100;
+            progressBar.style.width = `${progress}%`;
+
+            const slideElements = document.querySelectorAll('.slide');
+            slideElements.forEach((slide, i) => {
+                const rect = slide.getBoundingClientRect();
+                if (rect.top <= 100 && i < slideElements.length - 1) {
+                    slide.setAttribute('data-stack-status', 'stacked');
+                } else {
+                    slide.removeAttribute('data-stack-status');
+                }
+            });
+        });
+
+        initCharts();
     </script>
-  </body>
+</body>
 </html>
