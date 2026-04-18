@@ -253,6 +253,14 @@
             min-height: 450px;
         }
 
+        .slide-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
         /* Highlight Boxes */
         .highlight {
             background: linear-gradient(90deg, hsla(263, 89%, 66%, 0.1), transparent);
@@ -443,6 +451,7 @@
                 meta: "La Brecha de Comportamiento",
                 title: "Incertidumbre vs. Alivio",
                 subtitle: "El ahorro como meta aspiracional",
+                image: "assets/problem.png",
                 bodyHtml: `
                     <ul>
                         <li><strong>Disonancia:</strong> 79% valora el ahorro, solo 35% es coherente.</li>
@@ -460,6 +469,7 @@
                 meta: "Evolución Conceptual",
                 title: "El Nuevo Paradigma",
                 subtitle: "El consumo como homeostásis emocional",
+                image: "assets/paradigm.png",
                 bodyHtml: `
                     <ul>
                         <li>Transferecia del valor: de la utilidad al sentimiento.</li>
@@ -474,6 +484,7 @@
                 meta: "Metodología Analítica",
                 title: "Modelo S-O-R Algorítmico",
                 subtitle: "Agentic Commerce y Confianza Diferida",
+                layout: "full",
                 bodyHtml: `
                     <div style="display: flex; justify-content: space-around; align-items: center; margin-top: 2rem;">
                         <div class="sor-node"><strong>S</strong><br><small>Escasez & Social</small></div>
@@ -482,7 +493,7 @@
                         <div class="sor-arrow">→</div>
                         <div class="sor-node"><strong>R</strong><br><small>Micro-conversiones</small></div>
                     </div>
-                    <p style="margin-top: 2rem; color: var(--accent-secondary);">Delegación de la decisión al algoritmo mediante <strong>Confianza Estructural</strong>.</p>
+                    <p style="margin-top: 2rem; color: var(--accent-secondary); text-align: center;">Delegación de la decisión al algoritmo mediante <strong>Confianza Estructural</strong>.</p>
                 `,
                 notes: "Introducimos el Agentic Commerce: el usuario ya no decide solo; delega su criterio a algoritmos percibidos como validadores objetivos."
             },
@@ -521,6 +532,7 @@
                 meta: "Anatomía del Fenómeno",
                 title: "Treatonomics",
                 subtitle: "Micro-resistencia y Legitimación Social",
+                image: "assets/concept.png",
                 bodyHtml: `
                     <ul>
                         <li><strong>Lenguaje Digital:</strong> "Para eso trabajo" como mantra de autocuidado.</li>
@@ -538,8 +550,9 @@
                 meta: "Diseño de Estrategia",
                 title: "Estrategia SAF",
                 subtitle: "Hacia un Consumo Consciente",
+                layout: "full",
                 bodyHtml: `
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 4rem;">
                         <div class="sor-node" style="border-color: var(--accent-primary)">
                             <h4 style="color: var(--accent-primary)">S - Adecuación</h4>
                             <p><small>Intervención de estímulos digitales</small></p>
@@ -561,6 +574,7 @@
                 meta: "Sintésis Final",
                 title: "Conclusiones: Un Nuevo Paradigma",
                 subtitle: "Respuesta Adaptativa vs. Irracionalidad",
+                image: "assets/conclusions.png",
                 bodyHtml: `
                     <ul>
                         <li><strong>Adaptabilidad:</strong> El consumo es una respuesta lógica a la incertidumbre.</li>
@@ -612,7 +626,8 @@
                         
                         ${!isFull ? `
                         <div class="visual-container">
-                            ${slide.chart ? `<div class="chart-container"><canvas id="chart-${slide.id}"></canvas></div>` : `
+                            ${slide.chart ? `<div class="chart-container"><canvas id="chart-${slide.id}"></canvas></div>` : 
+                              slide.image ? `<img src="${slide.image}" alt="${slide.title}" class="slide-image">` : `
                                 <div style="color: var(--accent-secondary); text-align: center;">
                                     <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><line x1="12" y1="22" x2="12" y2="12"></line></svg>
                                 </div>
