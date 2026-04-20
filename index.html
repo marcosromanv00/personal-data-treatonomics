@@ -125,9 +125,10 @@
             background: var(--card-bg);
             border: none;
             border-radius: 0;
-            padding: clamp(2rem, 8vw, 6rem);
+            padding: clamp(2rem, 5vh, 5rem) clamp(2rem, 8vw, 8rem);
             display: flex;
             flex-direction: column;
+            justify-content: center; /* Center content vertically */
             position: relative;
             overflow: hidden;
             transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
@@ -151,8 +152,8 @@
         .content-layout {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
-            gap: 3rem;
-            flex: 1;
+            gap: 2rem;
+            width: 100%;
             z-index: 2;
         }
 
@@ -171,7 +172,7 @@
         }
 
         .slide-header {
-            margin-bottom: 2rem;
+            margin-bottom: clamp(1rem, 3vh, 2rem);
         }
 
         .slide-meta {
@@ -185,20 +186,20 @@
         }
 
         .slide-title {
-            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-size: clamp(2.5rem, 6vw, 4.8rem);
             font-weight: 800;
-            line-height: 1.1;
+            line-height: 1.05;
             background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .slide-subtitle {
-            font-size: 1.8rem;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
             color: var(--text-secondary);
             font-weight: 400;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
         }
 
         .slide-body {
@@ -240,17 +241,17 @@
             justify-content: center;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 32px;
-            padding: 3rem;
+            padding: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
-            height: 100%;
-            min-height: 400px;
+            max-height: 50vh;
+            width: 100%;
         }
 
         .chart-container {
             width: 100%;
             height: 100%;
-            min-height: 450px;
+            min-height: 300px;
         }
 
         .slide-image {
@@ -447,8 +448,32 @@
                 notes: "Hoy exploraremos cómo el consumo en la era digital ha trascendido lo funcional para convertirse en un mecanismo de compensación emocional mediado tecnología."
             },
             {
+                id: "indice",
+                meta: "Estructura de la Defensa",
+                title: "Índice Temático",
+                subtitle: "Recorrido de la investigación",
+                layout: "full",
+                bodyHtml: `
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; text-align: left; margin-top: 2rem;">
+                        <ul style="list-style: none;">
+                            <li><strong style="color: var(--accent-primary)">01.</strong> Problema Central</li>
+                            <li><strong style="color: var(--accent-primary)">02.</strong> Marco Analítico (SOR)</li>
+                            <li><strong style="color: var(--accent-primary)">03.</strong> OA1: Estímulos Digitales</li>
+                            <li><strong style="color: var(--accent-primary)">04.</strong> OA2: Psicología del Consumo</li>
+                        </ul>
+                        <ul style="list-style: none;">
+                            <li><strong style="color: var(--accent-primary)">05.</strong> OA3: La Brecha Racional</li>
+                            <li><strong style="color: var(--accent-primary)">06.</strong> OA4: Treatonomics</li>
+                            <li><strong style="color: var(--accent-primary)">07.</strong> Estrategia SAF</li>
+                            <li><strong style="color: var(--accent-primary)">08.</strong> Conclusiones</li>
+                        </ul>
+                    </div>
+                `,
+                notes: "Nuestra agenda se divide en tres fases: Diagnóstico de la problemática, hallazgos por objetivos y propuesta de intervención estratégica."
+            },
+            {
                 id: "problema",
-                meta: "La Brecha de Comportamiento",
+                meta: "Contexto de la Investigación",
                 title: "Incertidumbre vs. Alivio",
                 subtitle: "El ahorro como meta aspiracional",
                 image: "assets/problem.png",
@@ -465,23 +490,8 @@
                 notes: "No es falta de educación financiera. Ante la imposibilidad de metas a largo plazo, el cerebro prioriza el alivio inmediato a través del gasto emocional."
             },
             {
-                id: "insight",
-                meta: "Evolución Conceptual",
-                title: "El Nuevo Paradigma",
-                subtitle: "El consumo como homeostásis emocional",
-                image: "assets/paradigm.png",
-                bodyHtml: `
-                    <ul>
-                        <li>Transferecia del valor: de la utilidad al sentimiento.</li>
-                        <li>El objeto como validación y alivio.</li>
-                        <li>Legitimidad social otorgada por el entorno digital.</li>
-                    </ul>
-                `,
-                notes: "El consumo ya no satisface solo una necesidad física; hoy regula estados de ánimo internos, validados por una comunidad digital que normaliza el 'auto-regalo'."
-            },
-            {
                 id: "marco",
-                meta: "Metodología Analítica",
+                meta: "Fundamentación Teórica",
                 title: "Modelo S-O-R Algorítmico",
                 subtitle: "Agentic Commerce y Confianza Diferida",
                 layout: "full",
@@ -498,38 +508,60 @@
                 notes: "Introducimos el Agentic Commerce: el usuario ya no decide solo; delega su criterio a algoritmos percibidos como validadores objetivos."
             },
             {
-                id: "findings-1",
-                meta: "Hallazgos Cuantitativos",
-                title: "Disonancia de Valor",
-                subtitle: "Ahorro vs. Acción Real",
-                chart: "dissonance",
+                id: "oa1-triggers",
+                meta: "Resultados OA1",
+                title: "¿Qué detona el impulso en entornos digitales?",
+                subtitle: "Objetivo: Identificar los estímulos y plataformas que activan el comportamiento no planificado.",
+                chart: "triggers",
                 bodyHtml: `
-                    <ul>
-                        <li><strong>79%</strong> considera el ahorro como una prioridad crítica.</li>
-                        <li>Sólo el <strong>35%</strong> reporta coherencia entre este valor y su gasto real.</li>
-                        <li>La brecha se ensancha en momentos de alta fatiga de decisión.</li>
-                    </ul>
+                    <div style="margin-top: 1rem; border-left: 3px solid var(--accent-primary); padding-left: 1rem;">
+                        <p><strong>Hallazgo:</strong> La validación social (recomendaciones) y las promociones actúan como gatillos principales, desplazando a la publicidad tradicional.</p>
+                    </div>
                 `,
-                notes: "Los datos son claros: hay una intención de ahorro masiva, pero una ejecución fragmentada. Esta brecha del 44% es donde opera el consumo emocional."
+                notes: "El OA1 nos revela que el estímulo no es pasivo; es una interacción social mediada por la oportunidad percibida (promociones)."
             },
             {
                 id: "findings-2",
-                meta: "Hallazgos Cuantitativos",
-                title: "Activadores Emocionales",
-                subtitle: "El estado previo a la compra",
+                meta: "Resultados OA2",
+                title: "¿Cómo regula la compra nuestro estado emocional?",
+                subtitle: "Objetivo: Analizar la transición psicológica de los usuarios antes y después del consumo.",
                 chart: "emotions",
                 bodyHtml: `
-                    <ul>
-                        <li>Predominio de la Ansiedad y el Estrés (casi 70%).</li>
-                        <li>La compra proporciona un alivio neuroquímico inmediato.</li>
-                        <li>Transición rápida: de la tensión a la 'felicidad' transitoria.</li>
-                    </ul>
+                    <div style="margin-top: 1rem; border-left: 3px solid var(--accent-secondary); padding-left: 1rem;">
+                        <p><strong>Hallazgo:</strong> El consumo actúa como un potente regulador emocional, reduciendo niveles de estrés y ansiedad en un 70% de forma inmediata.</p>
+                    </div>
                 `,
-                notes: "No compramos porque nos sobre el dinero, compramos para mitigar el estrés. El consumo se ha convertido en la pastilla digital para la ansiedad profesional."
+                notes: "Los datos del OA2 demuestran que la compra no es solo transacción, es terapia micro-escalada para gestionar el malestar profesional."
+            },
+            {
+                id: "findings-1",
+                meta: "Resultados OA3",
+                title: "¿Por qué valoramos el ahorro pero priorizamos el gasto?",
+                subtitle: "Objetivo: Cuantificar la disonancia cognitiva entre valores financieros y acciones reales.",
+                chart: "dissonance",
+                bodyHtml: `
+                    <div style="margin-top: 1rem; border-left: 3px solid #fff; padding-left: 1rem;">
+                        <p><strong>Hallazgo:</strong> Existe una brecha crítica del 44% entre la valoración teórica del ahorro y la ejecución efectiva del gasto impulsivo.</p>
+                    </div>
+                `,
+                notes: "En el OA3 observamos el corazón del problema: la intención es el ahorro, pero la urgencia emocional gana la batalla en el punto de decisión."
+            },
+            {
+                id: "oa4-exposure",
+                meta: "Resultados OA4",
+                title: "¿Es la 'Treatonomics' una respuesta algorítmica?",
+                subtitle: "Objetivo: Evaluar la influencia de la exposición constante en redes en la normalización del gasto como bienestar.",
+                chart: "exposure",
+                bodyHtml: `
+                    <div style="margin-top: 1rem; border-left: 3px solid var(--accent-primary); padding-left: 1rem;">
+                        <p><strong>Hallazgo:</strong> La exposición frecuente (65%) legitima y normaliza el 'auto-regalo' como una norma socialmente aceptada y automatizada.</p>
+                    </div>
+                `,
+                notes: "El OA4 cierra el ciclo demostrando que el entorno digital no solo muestra productos, sino que educa al usuario en la normalización del gasto compensatorio."
             },
             {
                 id: "concept-treatonomics",
-                meta: "Anatomía del Fenómeno",
+                meta: "Concepto Central",
                 title: "Treatonomics",
                 subtitle: "Micro-resistencia y Legitimación Social",
                 image: "assets/concept.png",
@@ -645,7 +677,34 @@
             Chart.defaults.color = 'hsla(215, 25%, 72%, 0.8)';
             Chart.defaults.font.family = "'Inter', sans-serif";
 
-            // Dissonance Chart
+            // OA1: Triggers Chart (from rawData.contenido)
+            const ctxOA1 = document.getElementById('chart-oa1-triggers')?.getContext('2d');
+            if (ctxOA1) {
+                new Chart(ctxOA1, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Promociones', 'Recomendaciones', 'Videos "merecer"', 'Influencers'],
+                        datasets: [{
+                            data: [65, 48, 10, 15],
+                            backgroundColor: ['hsla(263, 89%, 66%, 0.6)', 'hsla(192, 91%, 47%, 0.6)', 'hsla(16, 89%, 66%, 0.6)', 'hsla(45, 89%, 66%, 0.6)'],
+                            borderColor: ['hsl(263, 89%, 66%)', 'hsl(192, 91%, 47%)', 'hsl(16, 89%, 66%)', 'hsl(45, 89%, 66%)'],
+                            borderWidth: 2,
+                            borderRadius: 8
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: { 
+                            x: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' } },
+                            y: { grid: { display: false } }
+                        }
+                    }
+                });
+            }
+
+            // OA3: Dissonance Chart
             const ctx1 = document.getElementById('chart-findings-1')?.getContext('2d');
             if (ctx1) {
                 new Chart(ctx1, {
@@ -671,7 +730,7 @@
                 });
             }
 
-            // Emotions Chart
+            // OA2: Emotions Chart
             const ctx2 = document.getElementById('chart-findings-2')?.getContext('2d');
             if (ctx2) {
                 new Chart(ctx2, {
@@ -700,6 +759,31 @@
                             y: { display: false },
                             x: { grid: { color: 'rgba(255,255,255,0.05)' } }
                         }
+                    }
+                });
+            }
+
+            // OA4: Exposure Chart (from rawData.redes_freq)
+            const ctxOA4 = document.getElementById('chart-oa4-exposure')?.getContext('2d');
+            if (ctxOA4) {
+                new Chart(ctxOA4, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Frecuentemente', 'A veces', 'Rara vez', 'Nunca'],
+                        datasets: [{
+                            data: [32, 33, 29, 6],
+                            backgroundColor: ['hsla(263, 89%, 66%, 0.6)', 'hsla(192, 91%, 47%, 0.6)', 'hsla(16, 89%, 66%, 0.6)', 'hsla(215, 25%, 72%, 0.6)'],
+                            borderColor: ['hsl(263, 89%, 66%)', 'hsl(192, 91%, 47%)', 'hsl(16, 89%, 66%)', 'hsl(215, 25%, 72%)'],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        plugins: { 
+                            legend: { position: 'bottom' },
+                            title: { display: false }
+                        },
+                        cutout: '70%'
                     }
                 });
             }
