@@ -451,23 +451,26 @@
                 id: "indice",
                 meta: "Estructura de la Defensa",
                 title: "Índice Temático",
-                subtitle: "Recorrido de la investigación",
+                subtitle: "Lógica de la Investigación",
                 layout: "full",
                 bodyHtml: `
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; text-align: left; margin-top: 2rem;">
                         <ul style="list-style: none;">
-                            <li><strong style="color: var(--accent-primary)">01.</strong> Problema Central</li>
-                            <li><strong style="color: var(--accent-primary)">02.</strong> Marco Analítico (SOR)</li>
-                            <li><strong style="color: var(--accent-primary)">03.</strong> OA1: Estímulos Digitales</li>
-                            <li><strong style="color: var(--accent-primary)">04.</strong> OA2: Psicología del Consumo</li>
+                            <li><strong style="color: var(--accent-primary)">01.</strong> Diagnóstico: Incertidumbre y Problema</li>
+                            <li><strong style="color: var(--accent-primary)">02.</strong> Marco: El Modelo S-O-R Algorítmico</li>
+                            <li><strong style="color: var(--accent-primary)">03.</strong> OA1: Disparadores de la Decisión</li>
+                            <li><strong style="color: var(--accent-primary)">04.</strong> OA2: Regulación y Psicología</li>
                         </ul>
                         <ul style="list-style: none;">
-                            <li><strong style="color: var(--accent-primary)">05.</strong> OA3: La Brecha Racional</li>
-                            <li><strong style="color: var(--accent-primary)">06.</strong> OA4: Treatonomics</li>
-                            <li><strong style="color: var(--accent-primary)">07.</strong> Estrategia SAF</li>
-                            <li><strong style="color: var(--accent-primary)">08.</strong> Conclusiones</li>
+                            <li><strong style="color: var(--accent-primary)">05.</strong> OA3: La Paradoja del Ahorro</li>
+                            <li><strong style="color: var(--accent-primary)">06.</strong> OA4: Treatonomics y Normalización</li>
+                            <li><strong style="color: var(--accent-primary)">07.</strong> Estrategia: El Modelo SAF</li>
+                            <li><strong style="color: var(--accent-primary)">08.</strong> Prospectiva y Conclusiones</li>
                         </ul>
                     </div>
+                    <p style="margin-top: 2rem; border-left: 2px solid var(--accent-secondary); padding-left: 1rem; color: var(--text-secondary); font-style: italic;">
+                        "Un recorrido desde la identificación del estímulo digital (S) hasta la construcción de una respuesta estratégica consciente (F)."
+                    </p>
                 `,
                 notes: "Nuestra agenda se divide en tres fases: Diagnóstico de la problemática, hallazgos por objetivos y propuesta de intervención estratégica."
             },
@@ -475,16 +478,18 @@
                 id: "problema",
                 meta: "Contexto de la Investigación",
                 title: "Incertidumbre vs. Alivio",
-                subtitle: "El ahorro como meta aspiracional",
+                subtitle: "La Crisis de las Metas a Largo Plazo",
                 image: "assets/problem_human.png",
                 bodyHtml: `
-                    <ul>
-                        <li><strong>Disonancia:</strong> 79% valora el ahorro, solo 35% es coherente.</li>
-                        <li><strong>Contexto:</strong> Metas macro (vivienda) percibidas como inalcanzables.</li>
-                        <li><strong>Mecanismo:</strong> El consumo impulsivo surge como supervivencia emocional.</li>
-                    </ul>
-                    <div class="highlight">
-                        <p class="highlight-text">"¿Es irracionalidad o una respuesta adaptativa ante una economía rota?"</p>
+                    <div style="text-align: left;">
+                        <p><strong>El Dilema Generacional:</strong> Ante una economía percibida como "rota", donde metas como la vivienda propia son inalcanzables, el joven profesional pivota su estrategia financiera hacia la gratificación inmediata.</p>
+                        <ul style="margin-top: 1rem;">
+                            <li><strong>Disonancia:</strong> 79% valora el ahorro, pero solo el 35% logra ejecutarlo coherentemente.</li>
+                            <li><strong>Mecanismo:</strong> El 'auto-regalo' no es un error de cálculo, es una **Micro-resistencia emocional**.</li>
+                        </ul>
+                    </div>
+                    <div class="highlight" style="margin-top: 1.5rem;">
+                        <p class="highlight-text">"¿Es irracionalidad o una respuesta adaptativa ante un futuro incierto?"</p>
                     </div>
                 `,
                 notes: "No es falta de educación financiera. Ante la imposibilidad de metas a largo plazo, el cerebro prioriza el alivio inmediato a través del gasto emocional."
@@ -493,29 +498,42 @@
                 id: "marco",
                 meta: "Fundamentación Teórica",
                 title: "Modelo S-O-R Algorítmico",
-                subtitle: "Agentic Commerce y Confianza Diferida",
+                subtitle: "De la Activación Digital a la Regulación Emocional",
                 layout: "full",
                 bodyHtml: `
-                    <div style="display: flex; justify-content: space-around; align-items: center; margin-top: 2rem;">
-                        <div class="sor-node"><strong>S</strong><br><small>Escasez & Social</small></div>
-                        <div class="sor-arrow">→</div>
-                        <div class="sor-node"><strong>O</strong><br><small>Inmersión & Flow</small></div>
-                        <div class="sor-arrow">→</div>
-                        <div class="sor-node"><strong>R</strong><br><small>Micro-conversiones</small></div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 2rem;">
+                        <div class="sor-node" style="border-top: 4px solid var(--accent-primary)">
+                            <h4 style="color: var(--accent-primary)">S - Estímulo</h4>
+                            <p><small><strong>Ecosistema Inmersivo:</strong> OA1 revela que promociones (65%) y validación social (48%) actúan como gatillos que anulan la planificación inicial.</small></p>
+                        </div>
+                        <div class="sor-node" style="border-top: 4px solid var(--accent-secondary)">
+                            <h4 style="color: var(--accent-secondary)">O - Organismo</h4>
+                            <p><small><strong>Gestión Emocional:</strong> OA2 confirma que el consumo funciona como regulador; el 70% equilibra su ansiedad mediante el "alivio" de la compra.</small></p>
+                        </div>
+                        <div class="sor-node" style="border-top: 4px solid #fff">
+                            <h4>R - Respuesta</h4>
+                            <p><small><strong>Brecha Racional:</strong> OA3 muestra una disonancia del 44%. El cerebro prioriza la recompensa inmediata sobre metas macro inalcanzables.</small></p>
+                        </div>
                     </div>
-                    <p style="margin-top: 2rem; color: var(--accent-secondary); text-align: center;">Delegación de la decisión al algoritmo mediante <strong>Confianza Estructural</strong>.</p>
+                    <div class="highlight" style="margin-top: 2rem;">
+                        <p class="highlight-text" style="font-size: 1.1rem;">"El Agentic Commerce delega la decisión al algoritmo mediante Confianza Estructural: el usuario confía en que el sistema sabe qué necesita para sentirse mejor."</p>
+                    </div>
                 `,
-                notes: "Introducimos el Agentic Commerce: el usuario ya no decide solo; delega su criterio a algoritmos percibidos como validadores objetivos."
+                notes: "Evolucionamos el modelo S-O-R. El usuario ya no decide solo; delega su criterio a algoritmos percibidos como validadores objetivos de su bienestar."
             },
             {
                 id: "oa1-triggers",
                 meta: "Resultados OA1",
-                title: "¿Qué detona el impulso en entornos digitales?",
-                subtitle: "Objetivo: Identificar los estímulos y plataformas que activan el comportamiento no planificado.",
+                title: "Detonantes en Entornos Digitales",
+                subtitle: "Arquitectura de la Decisión Algorítmica",
                 chart: "triggers",
                 bodyHtml: `
-                    <div style="margin-top: 1rem; border-left: 3px solid var(--accent-primary); padding-left: 1rem;">
-                        <p><strong>Hallazgo:</strong> La validación social (recomendaciones) y las promociones actúan como gatillos principales, desplazando a la publicidad tradicional.</p>
+                    <div style="margin-top: 1rem; border-left: 3px solid var(--accent-primary); padding-left: 1rem; text-align: left;">
+                        <p><strong>Hallazgo Clave:</strong> Las plataformas han perfeccionado la **Fricción Negativa**. Al eliminar pasos entre el deseo y la compra, se anula la ventana de deliberación racional.</p>
+                        <ul style="margin-top: 1rem; color: var(--text-secondary);">
+                            <li><strong>Gatillo 1:</strong> Promociones "limitadas" (65%) que simulan escasez.</li>
+                            <li><strong>Gatillo 2:</strong> Recomendaciones algorítmicas (48%) percibidas como validación objetiva.</li>
+                        </ul>
                     </div>
                 `,
                 notes: "El OA1 nos revela que el estímulo no es pasivo; es una interacción social mediada por la oportunidad percibida (promociones)."
@@ -523,12 +541,13 @@
             {
                 id: "findings-2",
                 meta: "Resultados OA2",
-                title: "¿Cómo regula la compra nuestro estado emocional?",
-                subtitle: "Objetivo: Analizar la transición psicológica de los usuarios antes y después del consumo.",
+                title: "Psicología del Autoregalo",
+                subtitle: "El Consumo como Homeostasis Emocional",
                 chart: "emotions",
                 bodyHtml: `
-                    <div style="margin-top: 1rem; border-left: 3px solid var(--accent-secondary); padding-left: 1rem;">
-                        <p><strong>Hallazgo:</strong> El consumo actúa como un potente regulador emocional, reduciendo niveles de estrés y ansiedad en un 70% de forma inmediata.</p>
+                    <div style="margin-top: 1rem; border-left: 3px solid var(--accent-secondary); padding-left: 1rem; text-align: left;">
+                        <p><strong>Hallazgo Clave:</strong> El 70% de los usuarios utiliza el consumo para retornar a un estado de calma. La compra es la herramienta más rápida para la **Regulación Emocional** inmediata.</p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">Pasamos de un 68% de emociones negativas (estrés/ansiedad) a un 72% de satisfacción/alivio post-compra en menos de 10 minutos.</p>
                     </div>
                 `,
                 notes: "Los datos del OA2 demuestran que la compra no es solo transacción, es terapia micro-escalada para gestionar el malestar profesional."
@@ -536,12 +555,13 @@
             {
                 id: "findings-1",
                 meta: "Resultados OA3",
-                title: "¿Por qué valoramos el ahorro pero priorizamos el gasto?",
-                subtitle: "Objetivo: Cuantificar la disonancia cognitiva entre valores financieros y acciones reales.",
+                title: "La Paradoja de la Intención",
+                subtitle: "Disonancia en la Gestión Financiera",
                 chart: "dissonance",
                 bodyHtml: `
-                    <div style="margin-top: 1rem; border-left: 3px solid #fff; padding-left: 1rem;">
-                        <p><strong>Hallazgo:</strong> Existe una brecha crítica del 44% entre la valoración teórica del ahorro y la ejecución efectiva del gasto impulsivo.</p>
+                    <div style="margin-top: 1rem; border-left: 3px solid #fff; padding-left: 1rem; text-align: left;">
+                        <p><strong>Hallazgo Clave:</strong> Existe una **Brecha Racional del 44%**. Mientras el 79% considera el ahorro una prioridad ética y de seguridad, solo el 35% logra resistir el impulso del autoregalo.</p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">Esta disonancia genera sentimientos de culpa post-compra, pero no detiene el ciclo debido a la recompensa dopaminérgica inmediata.</p>
                     </div>
                 `,
                 notes: "En el OA3 observamos el corazón del problema: la intención es el ahorro, pero la urgencia emocional gana la batalla en el punto de decisión."
@@ -549,12 +569,15 @@
             {
                 id: "oa4-exposure",
                 meta: "Resultados OA4",
-                title: "¿Es la 'Treatonomics' una respuesta algorítmica?",
-                subtitle: "Objetivo: Evaluar la influencia de la exposición constante en redes en la normalización del gasto como bienestar.",
+                title: "Validación Social Automatizada",
+                subtitle: "El Rol de Algoritmos y Comunidades",
                 chart: "exposure",
                 bodyHtml: `
-                    <div style="margin-top: 1rem; border-left: 3px solid var(--accent-primary); padding-left: 1rem;">
-                        <p><strong>Hallazgo:</strong> La exposición frecuente (65%) legitima y normaliza el 'auto-regalo' como una norma socialmente aceptada y automatizada.</p>
+                    <div style="margin-top: 1rem; border-left: 3px solid var(--accent-primary); padding-left: 1rem; text-align: left;">
+                        <p><strong>Hallazgo Clave:</strong> La exposición constante (65% frecuente) legitima el gasto. El entorno digital actúa como una **Cámara de Eco** que transforma el capricho en "necesidad de autocuidado".</p>
+                        <ul style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            <li><strong>Confianza Diferida:</strong> Delega la validación de la compra al feedback social (likes/comentarios).</li>
+                        </ul>
                     </div>
                 `,
                 notes: "El OA4 cierra el ciclo demostrando que el entorno digital no solo muestra productos, sino que educa al usuario en la normalización del gasto compensatorio."
@@ -563,16 +586,16 @@
                 id: "concept-treatonomics",
                 meta: "Concepto Central",
                 title: "Treatonomics",
-                subtitle: "Micro-resistencia y Legitimación Social",
+                subtitle: "Micro-resistencia y Legitimación Cultural",
                 image: "assets/treatonomics_human.png",
                 bodyHtml: `
-                    <ul>
-                        <li><strong>Lenguaje Digital:</strong> "Para eso trabajo" como mantra de autocuidado.</li>
-                        <li><strong>Confianza Diferida:</strong> El entorno digital validará el gasto mañana.</li>
-                        <li><strong>Netnografía:</strong> TikTok transforma el impulso en derecho cultural.</li>
-                    </ul>
-                    <div class="highlight">
-                        <p class="highlight-text">El consumo emocional es una herramienta de regulación, no un error.</p>
+                    <div style="text-align: left;">
+                        <p><strong>Definición:</strong> Fenómeno socio-económico donde el joven profesional utiliza pequeñas dosis de consumo como mecanismo de defensa ante la precariedad percibida.</p>
+                        <ul style="margin-top: 1rem;">
+                            <li><strong>Mantra TikTok:</strong> <span style="color: var(--accent-secondary)">"Para eso trabajo"</span> como validador moral definitivo.</li>
+                            <li><strong>Social Proof:</strong> Si el algoritmo me lo muestra, es porque "me lo merezco".</li>
+                            <li><strong>Netnografía:</strong> El autoregalo transmuta el estrés en un bien de consumo tangible.</li>
+                        </ul>
                     </div>
                 `,
                 notes: "A través de la netnografía, vemos que la Treatonomics es una forma socialmente aceptada de manejar el malestar psicológico mediante la gratificación micro."
@@ -581,40 +604,67 @@
                 id: "proposal-saf",
                 meta: "Diseño de Estrategia",
                 title: "Estrategia SAF",
-                subtitle: "Hacia un Consumo Consciente",
+                subtitle: "Sincronizando Emoción y Finanzas",
                 layout: "full",
                 bodyHtml: `
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 4rem;">
-                        <div class="sor-node" style="border-color: var(--accent-primary)">
-                            <h4 style="color: var(--accent-primary)">S - Adecuación</h4>
-                            <p><small>Intervención de estímulos digitales</small></p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 3rem;">
+                        <div class="sor-node" style="border-color: var(--accent-primary); text-align: left;">
+                            <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">S - Adecuación</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary);">Rediseño de la <strong>Arquitectura de Decisión</strong>. Intervenir en los puntos de contacto para alinear los estímulos con las metas de ahorro reales del OA3.</p>
                         </div>
-                        <div class="sor-node" style="border-color: var(--accent-secondary)">
-                            <h4 style="color: var(--accent-secondary)">A - Aceptación</h4>
-                            <p><small>Validación emocional sin juicios</small></p>
+                        <div class="sor-node" style="border-color: var(--accent-secondary); text-align: left;">
+                            <h4 style="color: var(--accent-secondary); margin-bottom: 0.5rem;">A - Aceptación</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary);">Validación de la <strong>Necesidad Emocional</strong>. No patologizar el gasto; aceptarlo como una herramienta de micro-resistencia ante la incertidumbre macroeconómica.</p>
                         </div>
-                        <div class="sor-node" style="border-color: #fff">
-                            <h4>F - Facilidad</h4>
-                            <p><small>Reducción de fricción consciente</small></p>
+                        <div class="sor-node" style="border-color: #fff; text-align: left;">
+                            <h4 style="margin-bottom: 0.5rem;">F - Facilidad</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary);">Implementación de <strong>Fricción Consciente</strong>. Hacer que la pausa sea tan accesible como la compra, permitiendo el retorno al pensamiento deliberativo.</p>
                         </div>
                     </div>
+                    <p style="margin-top: 2.5rem; text-align: center; color: var(--accent-secondary); font-weight: 600;">Propuesta: Pivotar del Consumo Reactivo al "Consumo Consciente Emocional".</p>
                 `,
-                notes: "Mi propuesta es el modelo SAF: No prohibir el gasto, sino adecuar los estímulos, aceptar la emoción subyacente y facilitar mecanismos de pausa consciente."
+                notes: "El modelo SAF no prohíbe; acompaña. Buscamos gestionar la gratificación mediante la adecuación de estímulos, aceptación emocional y facilidad en la pausa consciente."
             },
             {
                 id: "conclusions",
                 meta: "Sintésis Final",
                 title: "Conclusiones: Un Nuevo Paradigma",
-                subtitle: "Respuesta Adaptativa vs. Irracionalidad",
+                subtitle: "Homeostasis Digital y Micro-resistencia",
                 image: "assets/conclusions_human.png",
                 bodyHtml: `
-                    <ul>
-                        <li><strong>Adaptabilidad:</strong> El consumo es una respuesta lógica a la incertidumbre.</li>
-                        <li><strong>Hegemonía Algorítmica:</strong> La validación social es ahora automatizada.</li>
-                        <li><strong>No Linealidad:</strong> El decision-making es fluido e inmersivo.</li>
-                    </ul>
+                    <div style="text-align: left;">
+                        <p><strong>Hallazgos Finales:</strong> La investigación demuestra que la Treatonomics no es una conducta impulsiva aislada, sino una respuesta adaptativa sistemática.</p>
+                        <ul style="margin-top: 1rem;">
+                            <li><strong>Homeostasis:</strong> El consumo regula el malestar que el sistema no resuelve.</li>
+                            <li><strong>Fragmentación:</strong> Las metas macro (ahorro) se sacrifican por la supervivencia emocional micro.</li>
+                            <li><strong>Cámara de Eco:</strong> El entorno digital legitima y acelera este ciclo permanentemente.</li>
+                        </ul>
+                    </div>
                 `,
                 notes: "El análisis concluye que el bienestar inmediato se ha convertido en la nueva métrica de decisión ante un futuro económico inestable, exigiendo estrategias de mercado más empáticas."
+            },
+            {
+                id: "limitations",
+                meta: "Rigor Académico",
+                title: "Limitaciones del Análisis",
+                subtitle: "Alcance y Consideraciones Metodológicas",
+                layout: "full",
+                bodyHtml: `
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; text-align: left;">
+                        <div class="sor-node" style="border-color: var(--accent-primary)">
+                            <h4 style="color: var(--accent-primary)">Metodología</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Dependencia de la autopercepción de los encuestados; el sesgo de memoria puede influir en la disparidad reportada del OA3.</p>
+                        </div>
+                        <div class="sor-node" style="border-color: var(--accent-secondary)">
+                            <h4 style="color: var(--accent-secondary)">Muestra</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Enfoque exclusivo en jóvenes profesionales urbanos. Los resultados pueden variar significativamente en otros rangos etarios o contextos socioeconómicos.</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 2rem; color: var(--text-secondary); font-style: italic; font-size: 0.9rem;">
+                        * La volatilidad de los algoritmos de redes sociales (TikTok/Instagram) implica que los patrones de estímulo identificados están sujetos a cambios rápidos según las actualizaciones de las plataformas.
+                    </p>
+                `,
+                notes: "Como toda investigación, existen limitaciones que deben considerarse al interpretar los resultados, garantizando la honestidad académica del informe."
             },
             {
                 id: "preguntas",
