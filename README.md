@@ -1,16 +1,21 @@
-# Treatonomics Research Analysis
-Análisis interactivo de la investigación Treatonomics sobre comportamiento de consumo y micro-resistencia emocional ante la incertidumbre económica en jóvenes (18-35 años).
+# Treatonomics: Dashboard Analítico
 
-## Estructura del Proyecto
-- `index.html`: Dashboard Ejecutivo con KPIs estratégicos (OA1-OA4).
-- `full_report.html`: Desglose granular de las 14 preguntas de la encuesta.
-- `preprocess.py`: Script de procesamiento de datos (Python).
-- `data.json`: Datos procesados listos para visualización.
-- `Requirements.txt`: Documento base de la investigación.
+Investigación interactiva sobre el comportamiento de consumo bajo presión emocional y micro-resistencia.
 
-## Cómo visualizar el análisis
-Para ver el análisis interactivo, puedes usar **GitHub Pages**:
-1. Ve a **Settings** > **Pages** en este repositorio.
-2. En **Build and deployment**, selecciona la rama `main` y la carpeta `/(root)`.
-3. Haz clic en **Save**.
-4. ¡En unos minutos tendrás un link público para compartir!
+## 🚀 Overview
+Treatonomics transforma una investigación académica en una experiencia visual interactiva, permitiendo explorar datos psicológicos complejos a través de componentes web modernos.
+
+## ✨ Key Achievements
+- **Data Visualization**: Transformación de insights académicos en visualizaciones interactivas y estéticas.
+- **Exploración Psicológica**: Creación de un dashboard que permite descubrir patrones de comportamiento de consumo de manera intuitiva.
+- **Diseño Basado en Datos**: Implementación de animaciones y transiciones que reflejan la fluidez de la información investigada.
+
+## 🛠️ Technologies
+- HTML5 / CSS3
+- JavaScript (Data manipulation)
+- UI/UX focused on storytelling
+
+## 📦 Features
+- Dashboard exploratorio interactivo.
+- Visualización de patrones de micro-resistencia.
+- Diseño optimizado para la narrativa de datos.
